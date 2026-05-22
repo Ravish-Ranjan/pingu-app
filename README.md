@@ -69,7 +69,7 @@ BCRYPT_SALT_ROUNDS=10
     node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
     ```
 
-- **BCRYPT_SALT_ROUNDS** - The cost factor for bcryptjs password hashing (default: 10). Higher values are more secure but slower. Recommended range: 10-12
+- **BCRYPT_SALT_ROUNDS** - The cost factor for bcryptjs password hashing (default: 10). Higher values are more secure but slower. Required: 13
 
 **For Production:**
 
