@@ -27,15 +27,27 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/Ravish-Ranjan/pingu.git
-cd pingu
+cd pingu/apps/web
+npm install
+cd ../server
 npm install
 ```
 
 Run the development server:
 
+fromtend
 ```bash
+cd /apps/web
 npm run dev
 ```
+
+backend
+```bash
+cd /apps/server
+npm run dev
+```
+
+> **Device Registration Requirement:** Users must start and host the backend server before registering a device. The hosted server must be accessible over **HTTPS** for device registration
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
@@ -50,15 +62,14 @@ npm start
 
 ### Environment Variables
 
-Create a `.env.local` file in the project root with the following variables:
+Create a `.env` file in the server folder with the following variables:
 
 ```bash
 # JWT Configuration
 JWT_SECRET=your-secret-key-here-minimum-32-characters
 
 # Password Hashing (bcryptjs)
-# Salt rounds for bcryptjs hashing (recommended: 10-12)
-BCRYPT_SALT_ROUNDS=10
+PASS_HASH=your-passwordhash-from-bcryptjs
 ```
 
 **Configuration Details:**
@@ -69,12 +80,10 @@ BCRYPT_SALT_ROUNDS=10
     node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
     ```
 
-- **BCRYPT_SALT_ROUNDS** - The cost factor for bcryptjs password hashing (default: 10). Higher values are more secure but slower. Required: 13
-
 **For Production:**
 
 - Use strong, randomly generated secrets
-- Never commit `.env.local` to version control (it's in `.gitignore`)
+- Never commit `.env` to version control (it's in `.gitignore`)
 - Use a secrets management service for production deployments
 - Rotate secrets periodically
 
